@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/grid_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="fill_horizontal"
+    android:columnCount="4"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/text_field"
+        android:layout_columnSpan="4"
+        android:layout_gravity="fill_horizontal"
+        android:gravity="end"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold" />
+
+    <Button android:id="@+id/seven"     android:text="@string/seven"    />
+    <Button android:id="@+id/eight"     android:text="@string/eight"    />
+    <Button android:id="@+id/nine"      android:text="@string/nine"     />
+    <Button android:id="@+id/plus"      android:text="@string/plus"     />
+    <Button android:id="@+id/four"      android:text="@string/four"     />
+    <Button android:id="@+id/five"      android:text="@string/five"     />
+    <Button android:id="@+id/six"       android:text="@string/six"      />
+    <Button android:id="@+id/minus"     android:text="@string/minus"    />
+    <Button android:id="@+id/one"       android:text="@string/one"      />
+    <Button android:id="@+id/two"       android:text="@string/two"      />
+    <Button android:id="@+id/three"     android:text="@string/three"    />
+    <Button android:id="@+id/multiply"  android:text="@string/multiply" />
+    <Button android:id="@+id/zero"      android:text="@string/zero"     />
+    <Button android:id="@+id/dot"       android:text="@string/dot"      />
+    <Button android:id="@+id/equals"    android:text="@string/equals"   />
+    <Button android:id="@+id/divide"    android:text="@string/divide"   />
+
+</GridLayout>
