@@ -15,6 +15,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold" />
 
+    <Button android:id="@+id/clear"     android:text="@string/clear"    />
+    <Button android:id="@+id/inverse"   android:text="@string/inverse"  />
+    <Button android:id="@+id/sign"      android:text="@string/sign"     />
+    <Button android:id="@+id/backspace" android:text="@string/backspace"/>
     <Button android:id="@+id/seven"     android:text="@string/seven"    />
     <Button android:id="@+id/eight"     android:text="@string/eight"    />
     <Button android:id="@+id/nine"      android:text="@string/nine"     />

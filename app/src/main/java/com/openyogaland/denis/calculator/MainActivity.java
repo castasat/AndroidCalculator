@@ -34,25 +34,29 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
     textField = findViewById(R.id.text_field);
     
     // initialize array
-    buttons = new Button[16];
+    buttons = new Button[20];
     
     // initialize buttons
-    buttons[0]  = findViewById(R.id.seven);
-    buttons[1]  = findViewById(R.id.eight);
-    buttons[2]  = findViewById(R.id.nine);
-    buttons[3]  = findViewById(R.id.plus);
-    buttons[4]  = findViewById(R.id.four);
-    buttons[5]  = findViewById(R.id.five);
-    buttons[6]  = findViewById(R.id.six);
-    buttons[7]  = findViewById(R.id.minus);
-    buttons[8]  = findViewById(R.id.one);
-    buttons[9]  = findViewById(R.id.two);
-    buttons[10] = findViewById(R.id.three);
-    buttons[11] = findViewById(R.id.multiply);
-    buttons[12] = findViewById(R.id.zero);
-    buttons[13] = findViewById(R.id.dot);
-    buttons[14] = findViewById(R.id.equals);
-    buttons[15] = findViewById(R.id.divide);
+    buttons[0]  = findViewById(R.id.clear);
+    buttons[1]  = findViewById(R.id.inverse);
+    buttons[2]  = findViewById(R.id.sign);
+    buttons[3]  = findViewById(R.id.backspace);
+    buttons[4]  = findViewById(R.id.seven);
+    buttons[5]  = findViewById(R.id.eight);
+    buttons[6]  = findViewById(R.id.nine);
+    buttons[7]  = findViewById(R.id.plus);
+    buttons[8]  = findViewById(R.id.four);
+    buttons[9]  = findViewById(R.id.five);
+    buttons[10] = findViewById(R.id.six);
+    buttons[11] = findViewById(R.id.minus);
+    buttons[12] = findViewById(R.id.one);
+    buttons[13] = findViewById(R.id.two);
+    buttons[14] = findViewById(R.id.three);
+    buttons[15] = findViewById(R.id.multiply);
+    buttons[16] = findViewById(R.id.zero);
+    buttons[17] = findViewById(R.id.dot);
+    buttons[18] = findViewById(R.id.equals);
+    buttons[19] = findViewById(R.id.divide);
   
     for(Button button : buttons)
     {
@@ -84,8 +88,35 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
           currentArgument = (String) textField.getText();
           currentArgument += buttonPressed;
           textField.setText(currentArgument);
-          break;         
-        case  R.id.dot:
+          break;
+        case R.id.inverse:
+          currentArgument = (String) textField.getText();
+          try
+          {
+            currentNumber = Double.parseDouble(currentArgument);
+            currentNumber = 1 / currentNumber;
+            textField.setText(String.valueOf(currentNumber));
+          }
+          catch(NumberFormatException e)
+          {
+            textField.setText(R.string.NaN);
+          }
+          break;
+        case R.id.sign:
+          // check current argument and change sign
+          currentArgument = (String) textField.getText();
+          // if minus is the first symbol in current argument
+          if(currentArgument.indexOf('-') == 0)
+          {
+            currentArgument = currentArgument.substring(1);
+          }
+          else
+          {
+            currentArgument = MINUS + currentArgument;
+          }
+          textField.setText(currentArgument);
+          break;
+        case R.id.dot:
           // check current argument and add number to it's end
           currentArgument = (String) textField.getText();
           // if dot is the first symbol in current argument
@@ -100,6 +131,28 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
           }
           textField.setText(currentArgument);
           break;
+        case R.id.backspace:
+          currentArgument = (String) textField.getText();
+          if(!"".equals(currentArgument))
+          {
+            if(!"".equals(choosedOperation))
+            {
+              currentArgument = "";
+            }
+            else
+            {
+              currentArgument = currentArgument.substring(0, currentArgument.length() - 1);
+            }
+          }
+          textField.setText(currentArgument);
+          break;
+        case R.id.clear:
+          numberInMemory = 0;
+          currentNumber = 0;
+          currentArgument = "";
+          choosedOperation = "";
+          textField.setText(currentArgument);
+          break;
         case R.id.equals:
           if(numberInMemory != 0)
           {
@@ -110,13 +163,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
               switch(choosedOperation)
               {
                 case PLUS:
-                  currentNumber += numberInMemory;
+                  currentNumber = numberInMemory + currentNumber;
                   break;
                 case MINUS:
                   currentNumber = numberInMemory - currentNumber;
                   break;
                 case MULTIPLY:
-                  currentNumber *= numberInMemory;
+                  currentNumber = numberInMemory * currentNumber;
                   break;
                 case DIVIDE:
                   currentNumber = numberInMemory / currentNumber;
@@ -126,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
               }
               numberInMemory = currentNumber;
               choosedOperation = "";
-              currentArgument = "" + currentNumber;
+              currentArgument = String.valueOf(currentNumber);
               textField.setText(currentArgument);
             }
             catch(NumberFormatException e)
@@ -145,13 +198,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
               switch(choosedOperation)
               {
                 case PLUS:
-                  currentNumber += numberInMemory;
+                  currentNumber = numberInMemory + currentNumber;
                   break;
                 case MINUS:
                   currentNumber = numberInMemory - currentNumber;
                   break;
                 case MULTIPLY:
-                  currentNumber *= numberInMemory;
+                  currentNumber = numberInMemory * currentNumber;
                   break;
                 case DIVIDE:
                   currentNumber = numberInMemory / currentNumber;
@@ -185,13 +238,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
               switch(choosedOperation)
               {
                 case PLUS:
-                  currentNumber += numberInMemory;
+                  currentNumber = numberInMemory + currentNumber;
                   break;
                 case MINUS:
                   currentNumber = numberInMemory - currentNumber;
                   break;
                 case MULTIPLY:
-                  currentNumber *= numberInMemory;
+                  currentNumber = numberInMemory * currentNumber;
                   break;
                 case DIVIDE:
                   currentNumber = numberInMemory / currentNumber;
@@ -225,13 +278,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
               switch(choosedOperation)
               {
                 case PLUS:
-                  currentNumber += numberInMemory;
+                  currentNumber = numberInMemory + currentNumber;
                   break;
                 case MINUS:
                   currentNumber = numberInMemory - currentNumber;
                   break;
                 case MULTIPLY:
-                  currentNumber *= numberInMemory;
+                  currentNumber = numberInMemory * currentNumber;
                   break;
                 case DIVIDE:
                   currentNumber = numberInMemory / currentNumber;
@@ -255,7 +308,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
             textField.setText(R.string.NaN);
           }
           break;
-        
         case R.id.divide:
           currentArgument = (String) textField.getText();
           try
@@ -266,13 +318,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
               switch(choosedOperation)
               {
                 case PLUS:
-                  currentNumber += numberInMemory;
+                  currentNumber = numberInMemory + currentNumber;
                   break;
                 case MINUS:
                   currentNumber = numberInMemory - currentNumber;
                   break;
                 case MULTIPLY:
-                  currentNumber *= numberInMemory;
+                  currentNumber = numberInMemory * currentNumber;
                   break;
                 case DIVIDE:
                   currentNumber = numberInMemory / currentNumber;

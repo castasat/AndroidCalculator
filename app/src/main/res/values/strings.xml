@@ -17,4 +17,8 @@
     <string name="divide">/</string>
     <string name="NaN">NaN</string>
     <string name="zero">0</string>
+    <string name="clear">C</string>
+    <string name="backspace">&#8656;</string>
+    <string name="sign">+/-</string>
+    <string name="inverse">1/x</string>
 </resources>
